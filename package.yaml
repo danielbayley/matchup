@@ -32,3 +32,9 @@ engines:
   node: ">=21"
   pnpm: ">=10"
 packageManager: pnpm@10.0.0
+
+devDependencies:
+  yaml: ^2.7.0
+
+scripts:
+  prepare: yaml --single --json --indent ${TABSIZE:-2} < package.yaml > package.json
