@@ -24,6 +24,11 @@ author:
 
 license: MIT
 
+type: module
+exports: &index ./index.js
+files: [*index]
+
 engines:
+  node: ">=21"
   pnpm: ">=10"
 packageManager: pnpm@10.0.0
