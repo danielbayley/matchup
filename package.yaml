@@ -1,0 +1,29 @@
+# https://docs.npmjs.com/cli/configuring-npm/package-json
+version: 0.0.0
+name: match-up
+description: Reliable method to find the root path of your git repo, [p]npm/yarn package or app.
+keywords:
+- find
+- find-up
+- path
+- glob
+- pattern
+- match
+- config
+- walk
+- traverse
+
+homepage: https://github.com/danielbayley/match-up#readme
+repository: https://github.com/danielbayley/match-up
+bugs: https://github.com/danielbayley/match-up/issues
+
+author:
+  name: Daniel Bayley
+  email: daniel.bayley@me.com
+  url: https://danielbayley.dev
+
+license: MIT
+
+engines:
+  pnpm: ">=10"
+packageManager: pnpm@10.0.0
