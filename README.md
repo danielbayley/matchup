@@ -1,3 +1,5 @@
+<img src="logo.svg" width="18%" align="right"/>
+
 MatchUp
 =======
 Find the first path matching a [_glob_ pattern], walking up from a given directory.
