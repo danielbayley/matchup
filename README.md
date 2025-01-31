@@ -8,7 +8,7 @@ Find the first path matching a [_glob_ pattern], walking up from a given directo
 ~~~ js
 import {matchUp} from "@danielbayley/matchup"
 
-const metadata = await matchUp("package.*", { cwd: import.meta.dirname })
+const metadata = await matchup("package.*", { cwd: import.meta.dirname })
 ~~~
 
 Options
