@@ -1,4 +1,5 @@
-<img src="logo.svg" width="18%" align="right"/>
+<img src="logo.svg" width="160vw" align="right"/>
+<br><br>
 
 Matchup
 =======
