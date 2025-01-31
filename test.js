@@ -3,7 +3,7 @@ import { describe, it, beforeEach, afterEach } from "node:test"
 import fs from "node:fs/promises"
 import { parse, sep, join, format } from "node:path"
 import { createFixture } from "fs-fixture"
-import { matchUp } from "./index.js"
+import { matchup } from "./index.js"
 
 const { encoding } = new TextDecoder()
 
@@ -17,7 +17,7 @@ const tree    = {
   sub: { folder, [file]: symlink }
 }
 
-describe("matchUp", () => {
+describe("matchup", () => {
   let fixtures, cwd
   afterEach(() => fixtures.rm())
   beforeEach(mkdir)
@@ -27,30 +27,30 @@ describe("matchUp", () => {
   }
 
   it("return path object for match", async () => {
-    const path = await matchUp(file, { cwd })
+    const path = await matchup(file, { cwd })
     assert.doesNotThrow(() => format(path))
   })
 
   it("or an empty object if no match", async () => {
     const random = Math.max().toString(36).substring(7)
-    const object = await matchUp(`.${random}`, { cwd })
+    const object = await matchup(`.${random}`, { cwd })
     assert.deepEqual(object, {})
   })
 
   it("find nearest matching file", async () => {
-    const {base} = await matchUp(file, {cwd})
+    const {base} = await matchup(file, {cwd})
     assert.equal(base, file)
   })
 
   it("find matching directory", async () => {
-    const {name} = await matchUp("sub", { cwd })
+    const {name} = await matchup("sub", { cwd })
     assert.equal(name, "sub")
   })
 
   it("find matching glob pattern", async () => {
     const {ext}   = parse(file)
     const pattern = file.replace(ext, ".*")
-    const {base}  = await matchUp(pattern, { cwd })
+    const {base}  = await matchup(pattern, { cwd })
     assert.equal(base, file)
   })
 
@@ -62,20 +62,20 @@ describe("matchUp", () => {
       [file]: encoding,
       [module]: await fs.readFile(index, { encoding })
     })
-    const {matchUp} = await import(fixtures.getPath(module))
-    const {base}    = await matchUp(file)
+    const {matchup} = await import(fixtures.getPath(module))
+    const {base}    = await matchup(file)
     assert.equal(base, file)
     fixtures.rm()
   })
 
   it("ignore entries with given ignore patterns", async () => {
     const ignore = subpath.split(sep).slice(0, 1)
-    const {dir}  = await matchUp(file, { cwd, ignore })
+    const {dir}  = await matchup(file, { cwd, ignore })
     assert.equal(dir + sep, fixtures.path)
   })
 
   it("find no match limited by depth", async () => {
-    const match = await matchUp(file, { cwd, max: 1 })
+    const match = await matchup(file, { cwd, max: 1 })
     assert.deepEqual(match, {})
   })
 
@@ -84,8 +84,8 @@ describe("matchUp", () => {
     assert.equal(read, target)
 
     const cwd   = fixtures.getPath(subpath)
-    const match = await matchUp(file, { cwd })
-    const root  = await matchUp(file, { cwd, symlinks: false })
+    const match = await matchup(file, { cwd })
+    const root  = await matchup(file, { cwd, symlinks: false })
     assert.notDeepEqual(match, root)
   })
 })

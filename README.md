@@ -1,12 +1,12 @@
 <img src="logo.svg" width="18%" align="right"/>
 
-MatchUp
+Matchup
 =======
 Find the first path matching a [_glob_ pattern], walking up from a given directory.
 
 ## Example
 ~~~ js
-import {matchUp} from "match-up"
+import {matchUp} from "@danielbayley/matchup"
 
 const metadata = await matchUp("package.*", { cwd: import.meta.dirname })
 ~~~
@@ -22,7 +22,7 @@ Options
 
 ## Install
 ~~~ sh
-pnpm install match-up
+pnpm install @danielbayley/match-up
 ~~~
 
 License

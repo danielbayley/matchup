@@ -1,8 +1,8 @@
 import {readdir} from "node:fs/promises"
 import path from "node:path"
 
-export const matchup = matchUp
-export async function matchUp(pattern, options = {}) {
+export default matchup
+export async function matchup(pattern, options = {}) {
   options.max    ??= 10
   options.ignore ??= ["node_modules"]
 

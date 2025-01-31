@@ -1,6 +1,6 @@
 # https://docs.npmjs.com/cli/configuring-npm/package-json
 version: 0.0.0
-name: match-up
+name: "@danielbayley/matchup"
 description: Reliable method to find the root path of your git repo, [p]npm/yarn package or app.
 keywords:
 - find
@@ -13,21 +13,23 @@ keywords:
 - walk
 - traverse
 
-homepage: https://github.com/danielbayley/match-up#readme
-repository: danielbayley/match-up
-bugs: https://github.com/danielbayley/match-up/issues
+homepage: https://github.com/danielbayley/matchup#readme
+repository: danielbayley/matchup
+bugs: https://github.com/danielbayley/matchup/issues
 
 author:
   name: Daniel Bayley
   email: daniel.bayley@me.com
   url: https://danielbayley.dev
 
-funding: https://github.com/danielbayley/match-up?sponsor=1
+funding: https://github.com/danielbayley/matchup?sponsor=1
 license: MIT
 
 type: module
 exports: &index ./index.js
 files: [*index]
+publishConfig:
+  access: public
 
 engines:
   node: ">=21"
