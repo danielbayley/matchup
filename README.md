@@ -23,7 +23,7 @@ Options
 
 ## Install
 ~~~ sh
-pnpm install @danielbayley/match-up
+pnpm install @danielbayley/matchup
 ~~~
 
 License
