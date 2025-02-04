@@ -3,9 +3,10 @@ import { describe, it, beforeEach, afterEach } from "node:test"
 import fs from "node:fs/promises"
 import { parse, sep, join, format } from "node:path"
 import { createFixture } from "fs-fixture"
-import { matchup } from "./index.js"
 
-const { encoding } = new TextDecoder()
+const module = "./index.js"
+const {matchup}  = await import(module)
+const {encoding} = new TextDecoder()
 
 const file    = "file.ext"
 const subpath = "sub/folder"
@@ -55,14 +56,13 @@ describe("matchup", () => {
   })
 
   it("finds match up from dependency", async () => {
-    const index      = "index.js"
-    const dependency = "node_modules/@scope/package"
-    const module     = join(dependency, index)
+    const subpath    = "node_modules/@scope/package"
+    const dependency = join(subpath, module)
     const fixtures   = await createFixture({
       [file]: encoding,
-      [module]: await fs.readFile(index, { encoding })
+      [dependency]: await fs.readFile(module, { encoding })
     })
-    const {matchup} = await import(fixtures.getPath(module))
+    const {matchup} = await import(fixtures.getPath(dependency))
     const {base}    = await matchup(file)
     assert.equal(base, file)
     fixtures.rm()
