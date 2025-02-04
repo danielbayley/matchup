@@ -26,35 +26,35 @@ describe("matchup", () => {
     cwd = fixtures.getPath(subpath)
   }
 
-  it("return path object for match", async () => {
+  it("returns a path object for the match", async () => {
     const path = await matchup(file, { cwd })
     assert.doesNotThrow(() => format(path))
   })
 
-  it("or an empty object if no match", async () => {
+  it("else an empty object if no match", async () => {
     const random = Math.max().toString(36).substring(7)
     const object = await matchup(`.${random}`, { cwd })
     assert.deepEqual(object, {})
   })
 
-  it("find nearest matching file", async () => {
+  it("finds nearest matching file", async () => {
     const {base} = await matchup(file, {cwd})
     assert.equal(base, file)
   })
 
-  it("find matching directory", async () => {
+  it("finds matching directory", async () => {
     const {name} = await matchup("sub", { cwd })
     assert.equal(name, "sub")
   })
 
-  it("find matching glob pattern", async () => {
+  it("finds matching glob pattern", async () => {
     const {ext}   = parse(file)
     const pattern = file.replace(ext, ".*")
     const {base}  = await matchup(pattern, { cwd })
     assert.equal(base, file)
   })
 
-  it("find match up from dependency", async () => {
+  it("finds match up from dependency", async () => {
     const index      = "index.js"
     const dependency = "node_modules/@scope/package"
     const module     = join(dependency, index)
@@ -68,18 +68,18 @@ describe("matchup", () => {
     fixtures.rm()
   })
 
-  it("ignore entries with given ignore patterns", async () => {
+  it("ignores entries matching the given ignore patterns", async () => {
     const ignore = subpath.split(sep).slice(0, 1)
     const {dir}  = await matchup(file, { cwd, ignore })
     assert.equal(dir + sep, fixtures.path)
   })
 
-  it("find no match limited by depth", async () => {
+  it("finds no match limited by depth", async () => {
     const match = await matchup(file, { cwd, max: 1 })
     assert.deepEqual(match, {})
   })
 
-  it("match symbolic link unless symlinks: false", async () => {
+  it("matches symbolic links unless symlinks: false", async () => {
     const read = await fs.readlink(fixtures.getPath(`sub/${file}`))
     assert.equal(read, target)
 
