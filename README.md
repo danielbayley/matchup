@@ -7,9 +7,18 @@ Find the first path matching a [_glob_ pattern], walking up from a given directo
 
 ## Example
 ~~~ js
+import fs   from "node:fs/promises"
+import path from "node:path"
 import {matchup} from "@danielbayley/matchup"
 
-const metadata = await matchup("package.*", { cwd: import.meta.dirname })
+const cwd = import.meta.dirname
+const metadata = await matchup("package.*", { cwd })
+  .then(path.format)
+  .then(fs.readFile)
+  .then(JSON.parse)
+  .catch(console.error)
+
+console.log(metadata.type) // module
 ~~~
 
 Options
