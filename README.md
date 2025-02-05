@@ -11,7 +11,7 @@ import fs from "node:fs/promises"
 import {matchup} from "@danielbayley/matchup"
 
 const cwd = import.meta.dirname
-const metadata = await matchup("package.*", { cwd })
+const metadata = await matchup("package.*", { cwd }) // package.json
   .then(fs.readFile)
   .then(JSON.parse)
   .catch(console.error)
