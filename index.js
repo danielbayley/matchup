@@ -20,8 +20,9 @@ export async function matchup(pattern, options = {}) {
     const match = entries.filter(ignore)
       .find(({ name }) => path.matchesGlob(name, pattern))
 
-    if (match) return path.parse(rejoin(match))
-    if (depth === options.max || cwd === path.sep) return {}
+    if (match) return options.parse ? path.parse(rejoin(match)) : rejoin(match)
+
+    if (depth === options.max || cwd === path.sep) return options.parse && {}
 
     else cwd = path.resolve(cwd, "..")
     depth += 1
