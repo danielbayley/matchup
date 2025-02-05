@@ -61,5 +61,5 @@ License
 
 [_glob_ pattern]:         https://globster.xyz
 [`import.meta.dirname`]:  https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/import.meta
-[`node:path`]             https://nodejs.org/api/path.html#pathparsepath
+[`node:path`]:            https://nodejs.org/api/path.html#pathparsepath
 [symbolic links]:         https://wikipedia.org/wiki/Symbolic_link
