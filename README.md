@@ -7,13 +7,11 @@ Find the first path matching a [_glob_ pattern], walking up from a given directo
 
 ## Example
 ~~~ js
-import fs   from "node:fs/promises"
-import path from "node:path"
+import fs from "node:fs/promises"
 import {matchup} from "@danielbayley/matchup"
 
 const cwd = import.meta.dirname
 const metadata = await matchup("package.*", { cwd })
-  .then(path.format)
   .then(fs.readFile)
   .then(JSON.parse)
   .catch(console.error)
@@ -27,6 +25,7 @@ Options
 |:-----------|:------------------------|:------------------------------------------|
 | `cwd`      | [`import.meta.dirname`] | Search starting point.                    |
 | `ignore`   | `["node_modules"]`      | `ignore` paths containing these patterns. |
+| `parse`    |                         | `return` a [`node:path`] object.          |
 | `max`      | `10`                    | Maximum upward traversal depth.           |
 | `symlinks` |                         | `false` will not match [symbolic links].  |
 
@@ -62,4 +61,5 @@ License
 
 [_glob_ pattern]:         https://globster.xyz
 [`import.meta.dirname`]:  https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/import.meta
+[`node:path`]             https://nodejs.org/api/path.html#pathparsepath
 [symbolic links]:         https://wikipedia.org/wiki/Symbolic_link
