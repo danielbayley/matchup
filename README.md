@@ -33,13 +33,22 @@ Options
 ~~~ sh
 pnpm install @danielbayley/matchup
 ~~~
-This package is _[ESM]_ [only], so must be [`import`]ed instead of [`require`]d,
-and [depends] on _[Node]_ [`>=`][][`20`]:
+> [!IMPORTANT]
+> This package is _[ESM]_ [only], so must be [`import`]ed instead of [`require`]d,
+> and [depends] on _[Node]_ [`>=`][][`20`].
+
+Specify this requirement with [`engines`] and/or [`devEngines`]:
 ~~~ jsonc
 // package.json
 "type": "module",
 "engines": {
   "node": ">=20"
+},
+"devEngines": {
+  "runtime": {
+    "name": "node",
+    "version": ">=20"
+  }
 },
 ~~~
 
@@ -58,6 +67,8 @@ License
 [depends]:                https://docs.npmjs.com/cli/v11/configuring-npm/package-json#engines
 [`>=`]:                   https://docs.npmjs.com/cli/v6/using-npm/semver#ranges
 [`20`]:                   https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md
+[`engines`]:              https://docs.npmjs.com/cli/v11/configuring-npm/package-json#engines
+[`devEngines`]:           https://docs.npmjs.com/cli/v11/configuring-npm/package-json#devengines
 
 [_glob_ pattern]:         https://globster.xyz
 [`import.meta.dirname`]:  https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/import.meta
