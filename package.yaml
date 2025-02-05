@@ -1,5 +1,5 @@
 # https://docs.npmjs.com/cli/configuring-npm/package-json
-version: 1.0.1
+version: 1.0.2
 name: "@danielbayley/matchup"
 description: Find the first path matching a glob pattern, walking up from a given directory.
 keywords:
