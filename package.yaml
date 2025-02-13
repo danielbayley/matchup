@@ -45,7 +45,6 @@ scripts:
   prepare: yaml --single --json --indent ${TABSIZE:-2} < package.yaml > package.json
 
   test: node --experimental-test-coverage --test test.js
-  watch: pnpm test --watch
 
   prerelease: git stash --include-untracked --keep-index && pnpm prepare
   release: pnpm version --force --no-git-tag-version
