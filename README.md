@@ -1,4 +1,4 @@
-<img src="logo.svg" width="160vw" align="right"/>
+<img title="Matchup" alt="mu" src="logo.svg" align="right" width="160vw"/>
 <br><br>
 
 Matchup
