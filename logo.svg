@@ -1,11 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 320">
-  <style>
-    :root { color-scheme: light dark }
+<svg xmlns="http://www.w3.org/2000/svg" width="384" height="320" viewBox="0 0 384 320">
+  <style type="text/css">
+    :root {
+      color-scheme: light dark;
+      --light: #1f2328;
+      --dark:  #f0f6fc
+    }
+
+    /* FIXME: https://bugs.webkit.org/show_bug.cgi?id=199134 */
+    _::-webkit-full-page-media, _:future, :root * {
+      stroke: var(--dark);
+      mix-blend-mode: difference
+    }
+
     path {
       fill: none;
-      stroke: light-dark(#1f2328, #f0f6fc);
+      stroke: light-dark(var(--light), var(--dark));
       stroke-width: 40;
-      stroke-linecap: round;
+      stroke-linecap: round
     }
   </style>
   <path d="M64 192v-64c0-35.3 28.7-64 64-64h0c35.3 0 64 28.7 64 64m0 64v-64c0-35.3 28.7-64 64-64h0c35.3 0 64 28.7 64 64v64"/>
