@@ -34,7 +34,7 @@ publishConfig:
 engines:
   node: ">=20"
   pnpm: ">=10"
-packageManager: pnpm@10.0.0
+packageManager: pnpm@10.10.0
 
 devDependencies:
   fs-fixture: ^2.7.0
