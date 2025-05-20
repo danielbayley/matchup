@@ -43,7 +43,7 @@ devDependencies:
 
 scripts:
   prepare: yaml --single --json --indent ${TABSIZE:-2} < package.yaml > package.json
-  social-preview: sips --setProperty format png --resampleHeightWidthMax 1280 logo.svg --out social-preview.png
+  social-preview: sips --setProperty format png --resampleHeightWidthMax 768 --padToHeightWidth 640 1280 --padColor 0d1117 logo.svg --out social-preview.png
 
   test: node --experimental-test-coverage --test test.js
 
