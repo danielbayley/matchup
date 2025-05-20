@@ -1,9 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="384" height="320" viewBox="0 0 384 320">
-  <style type="text/css">
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="320" viewBox="0 0 640 320">
+  <style>
     :root {
       color-scheme: light dark;
       --light: #1f2328;
-      --dark:  #f0f6fc
+      --dark:  #f0f6fc;
+      --background: #0d1117;
+      --time: 2s;
+      --ease: ease-in-out
     }
 
     /* FIXME: https://bugs.webkit.org/show_bug.cgi?id=199134 */
@@ -16,9 +19,22 @@
       fill: none;
       stroke: light-dark(var(--light), var(--dark));
       stroke-width: 40;
-      stroke-linecap: round
+      stroke-linecap:  round;
+      stroke-linejoin: round;
+      animation: draw var(--time) forwards var(--ease)
+    } @keyframes draw {
+      from, to { transform: translateX(25%) }
+      from {
+        stroke-dasharray:   100;
+        stroke-dashoffset: -100
+      }
+      to { stroke-dashoffset: 100 }
     }
+
+    rect { display: none }
   </style>
-  <path d="M64 192v-64c0-35.3 28.7-64 64-64h0c35.3 0 64 28.7 64 64m0 64v-64c0-35.3 28.7-64 64-64h0c35.3 0 64 28.7 64 64v64"/>
-  <path d="M256 128v64c0 35.3-28.7 64-64 64h0c-35.3 0-64-28.7-64-64v-64"/>
+  <rect width="640" height="320" fill="var(--background)" stroke="none"/>
+  <path stroke="var(--dark)" pathLength="100" d="M448 192v-64c0-35.3-28.7-64-64-64h0c-35.3 0-64 28.7-64 64v64-64c0-35.3-28.7-64-64-64h0c-35.3 0-64 28.7-64 64v64"/>
+  <path stroke="var(--dark)" pathLength="100" d="M384 128v64c0 35.3-28.7 64-64 64h0c-35.3 0-64-28.7-64-64v-64"/>
 </svg>
+
