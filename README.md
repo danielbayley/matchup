@@ -1,5 +1,5 @@
-<img title="Matchup" alt="mu" src="logo.svg" align="right" width="240vw"/>
-<br>
+<img title="Matchup" alt="mu" src="logo.svg" align="right" width="160vw"/>
+<br><br>
 
 Matchup
 =======
