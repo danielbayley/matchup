@@ -60,7 +60,7 @@ scripts:
     git tag    --annotate $npm_new_version --message v$npm_new_version &&
     git push   --follow-tags
 
-  watch: pnpm test --watch
+  watch: node --experimental-test-coverage --test --watch test.js
   clean: git clean -X --force
   zap: pnpm clean && rm -rf node_modules || true
   reinstall: pnpm zap && pnpm install
